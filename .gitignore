@@ -1,0 +1,10 @@
+# 大视频文件（已托管到B站）
+素材/project-01-demo.mp4
+素材/作品图片/快手-组件库/主页类demo.mov
+
+# macOS 系统文件
+.DS_Store
+.codeflicker/
+
+# 未使用的素材备份
+素材/hero-video.mp4
