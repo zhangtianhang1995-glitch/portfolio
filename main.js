@@ -351,9 +351,9 @@ function initLightbox() {
         '素材/作品图片/快手-skill/6.png',
         '素材/作品图片/快手-skill/7.png',
         '素材/作品图片/快手-skill/8.png',
-        '素材/作品图片/快手-skill/9.png',
         { type: 'text', content: '最终交付不是一张图，而是可运行、可修改、可交接的页面资产。' },
         { type: 'bilibili', bvid: 'BV1gDJn6tEVg' },
+        '素材/作品图片/快手-skill/9.png',
       ],
       results: []
     },
