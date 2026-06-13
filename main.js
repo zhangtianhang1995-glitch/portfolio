@@ -662,7 +662,7 @@ window.addEventListener('load', () => {
 })();
 
 // ===== CONTACT MODAL =====
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   var btn   = document.getElementById('contactModalBtn');
   var modal = document.getElementById('contactModal');
   var close = document.getElementById('contactModalClose');
@@ -680,4 +680,4 @@ window.addEventListener('load', () => {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') modal.classList.remove('active');
   });
-})();
+});
