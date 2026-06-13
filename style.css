@@ -1246,10 +1246,11 @@ a.cbi-value:hover {
 .project-expand-inner {
   position: relative;
   width: 100%;
+  max-width: 800px;
   aspect-ratio: 16 / 9;
   border-radius: 16px;
   overflow: hidden;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 }
 
 .expand-img {
