@@ -353,6 +353,7 @@ function initLightbox() {
         '素材/作品图片/快手-skill/8.png',
         '素材/作品图片/快手-skill/9.png',
         '素材/作品图片/快手-skill/10.png',
+        { type: 'bilibili', bvid: 'BV1gDJn6tEVg' },
       ],
       results: []
     },
