@@ -660,3 +660,24 @@ window.addEventListener('load', () => {
     initTabs();
   }
 })();
+
+// ===== CONTACT MODAL =====
+(function() {
+  var btn   = document.getElementById('contactModalBtn');
+  var modal = document.getElementById('contactModal');
+  var close = document.getElementById('contactModalClose');
+  if (!btn || !modal) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    modal.classList.add('active');
+  });
+  close.addEventListener('click', function() {
+    modal.classList.remove('active');
+  });
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) modal.classList.remove('active');
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') modal.classList.remove('active');
+  });
+})();
