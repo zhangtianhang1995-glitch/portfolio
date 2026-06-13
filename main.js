@@ -352,7 +352,7 @@ function initLightbox() {
         '素材/作品图片/快手-skill/7.png',
         '素材/作品图片/快手-skill/8.png',
         '素材/作品图片/快手-skill/9.png',
-        '素材/作品图片/快手-skill/10.png',
+        { type: 'text', content: '最终交付不是一张图，而是可运行、可修改、可交接的页面资产。' },
         { type: 'bilibili', bvid: 'BV1gDJn6tEVg' },
       ],
       results: []
@@ -526,6 +526,9 @@ function initLightbox() {
       galleryEl.innerHTML = imgs.map(function(item) {
         if (typeof item === 'string') {
           return '<div class="lightbox-gallery-item"><img src="' + item + '" alt="" loading="lazy"/></div>';
+        }
+        if (item && item.type === 'text') {
+          return '<div class="lightbox-gallery-item lightbox-gallery-text"><p>' + item.content + '</p></div>';
         }
         if (item && item.type === 'bilibili') {
           return '<div class="lightbox-gallery-item"><iframe src="//player.bilibili.com/player.html?bvid=' + item.bvid + '&autoplay=0&danmaku=0" frameborder="0" allowfullscreen scrolling="no" style="width:100%;aspect-ratio:16/9;"></iframe></div>';

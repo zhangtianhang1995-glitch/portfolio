@@ -2281,3 +2281,21 @@ a.cbi-value:hover {
   .contact-right { flex-direction: column; }
   .hero-nann-wrap { margin-left: 0; }
 }
+
+.lightbox-gallery-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 28px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.lightbox-gallery-text p {
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  text-align: center;
+  margin: 0;
+}
