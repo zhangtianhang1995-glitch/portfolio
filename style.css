@@ -2001,9 +2001,7 @@ a.cbi-value:hover {
 }
 
 .contact-bg-overlay-top {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, var(--bg) 0%, rgba(7,11,10,0.4) 40%, transparent 100%);
+  display: none;
 }
 
 .contact-bg-overlay-bottom {
