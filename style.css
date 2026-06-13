@@ -956,6 +956,59 @@ a.cbi-value:hover {
 .card-bar.blue   { background: linear-gradient(to right, #3b82f6, #06b6d4); }
 .card-bar.yellow { background: linear-gradient(to right, #eab308, #fbbf24); }
 .card-bar.red    { background: linear-gradient(to right, #ef4444, #f87171); }
+/* ── About card expand on hover ── */
+.about-card {
+  transition: flex 0.45s cubic-bezier(0.4,0,0.2,1), transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.card-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease;
+  padding: 0 20px;
+}
+.card-detail-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin-bottom: 12px;
+}
+.card-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-detail-list li {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+  padding-left: 14px;
+  position: relative;
+}
+.card-detail-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: rgba(255,255,255,0.3);
+}
+/* Hover: expand active card */
+.about-cards:has(.about-card:hover) .about-card:not(:hover) {
+  opacity: 0.45;
+  transform: scale(0.97);
+  filter: blur(1px);
+}
+.about-card:hover .card-detail {
+  max-height: 200px;
+  opacity: 1;
+}
+.about-card:hover {
+  flex: 0 0 320px;
+  transform: translateY(-6px);
+  box-shadow: 0 28px 72px rgba(0,0,0,0.5);
+}
+
 
 /* About bio */
 .about-bio {
