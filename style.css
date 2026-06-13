@@ -1074,12 +1074,7 @@ a.cbi-value:hover {
 }
 
 .works::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, var(--bg) 20%, rgba(7,11,10,0.7) 60%, var(--bg) 100%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 
 .works > * {
@@ -1400,12 +1395,7 @@ a.cbi-value:hover {
 }
 
 .creations::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(7,11,10,0.72) 20%, rgba(7,11,10,0.42) 60%, rgba(7,11,10,0.72) 100%);
-  pointer-events: none;
-  z-index: 0;
+  display: none;
 }
 .creations::after {
   display: none;
@@ -2011,7 +2001,7 @@ a.cbi-value:hover {
 .contact-bg-overlay-bottom {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 50%);
+  background: linear-gradient(to top, rgba(7,11,10,0.45) 0%, transparent 42%);
 }
 
 /* Blue glow matching original "bg-gradient-to-b from-transparent to-blue-900/20" */
