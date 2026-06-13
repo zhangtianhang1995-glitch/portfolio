@@ -1394,7 +1394,7 @@ a.cbi-value:hover {
    ============================================ */
 
 .creations {
-  padding: 120px 72px;
+  padding: 120px 72px 48px;
   background: transparent;
   position: relative;
 }
@@ -1408,13 +1408,7 @@ a.cbi-value:hover {
   z-index: 0;
 }
 .creations::after {
-  content: '';
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 260px;
-  background: linear-gradient(to bottom, transparent 0%, rgba(7,11,10,0.65) 55%, transparent 100%);
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
 .creations > * {
@@ -1999,8 +1993,8 @@ a.cbi-value:hover {
 .contact {
   position: relative;
   overflow: hidden;
-  padding: 40px 72px 0;
-  margin-top: -80px;
+  padding: 56px 72px 0;
+  margin-top: 0;
 }
 
 .contact-bg {
@@ -2011,9 +2005,7 @@ a.cbi-value:hover {
 }
 
 .contact-bg-overlay-top {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(7,11,10,0.45) 0%, transparent 18%);
+  display: none;
 }
 
 .contact-bg-overlay-bottom {
