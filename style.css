@@ -769,6 +769,7 @@ a.cbi-value:hover {
 .about-card {
   flex: 0 0 280px;
   min-height: 420px;
+  max-height: 520px;
   background: rgba(22,22,28,0.9);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 24px;
@@ -1009,7 +1010,10 @@ a.cbi-value:hover {
 }
 .about-card:hover .card-detail {
   max-height: 200px;
+  overflow-y: auto;
   opacity: 1;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.2) transparent;
 }
 .about-card:hover {
   transform: translateY(-6px);
