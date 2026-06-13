@@ -1407,6 +1407,15 @@ a.cbi-value:hover {
   pointer-events: none;
   z-index: 0;
 }
+.creations::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
 
 .creations > * {
   position: relative;
