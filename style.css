@@ -1074,7 +1074,22 @@ a.cbi-value:hover {
 }
 
 .works::before {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(7,11,10) 30%, rgba(7,11,10,0.6) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+.works::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgb(7,11,10) 0%, transparent 40%),
+    linear-gradient(to bottom, rgba(7,11,10,0.5) 0%, transparent 15%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .works > * {
@@ -1395,10 +1410,22 @@ a.cbi-value:hover {
 }
 
 .creations::before {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(7,11,10) 30%, rgba(7,11,10,0.6) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 .creations::after {
-  display: none;
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgb(7,11,10) 0%, transparent 40%),
+    linear-gradient(to bottom, rgba(7,11,10,0.5) 0%, transparent 15%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .creations > * {
@@ -1994,14 +2021,22 @@ a.cbi-value:hover {
   pointer-events: none;
 }
 
+.contact-bg-overlay-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(7,11,10) 30%, rgba(7,11,10,0.6) 60%, transparent 100%);
+}
+
 .contact-bg-overlay-top {
-  display: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(7,11,10,0.5) 0%, transparent 15%);
 }
 
 .contact-bg-overlay-bottom {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(7,11,10,0.45) 0%, transparent 42%);
+  background: linear-gradient(to top, rgb(7,11,10) 0%, transparent 40%);
 }
 
 /* Blue glow matching original "bg-gradient-to-b from-transparent to-blue-900/20" */
