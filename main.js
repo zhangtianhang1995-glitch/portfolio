@@ -285,33 +285,33 @@ function initLightbox() {
       video: '//player.bilibili.com/player.html?bvid=BV173E16MEhn&autoplay=0&danmaku=0',
       gallery: [
         '素材/作品图片/快手-组件库/2.png',
-        '素材/作品图片/快手-组件库/3.png',
+        '素材/作品图片/快手-组件库/3.webp',
         '素材/作品图片/快手-组件库/4.png',
         '素材/作品图片/快手-组件库/5.png?v=2',
-        '素材/作品图片/快手-组件库/6.png',
-        '素材/作品图片/快手-组件库/7.png',
+        '素材/作品图片/快手-组件库/6.webp',
+        '素材/作品图片/快手-组件库/7.webp',
         '素材/作品图片/快手-组件库/8.png',
         '素材/作品图片/快手-组件库/9.png',
         '素材/作品图片/快手-组件库/10.png',
         '素材/作品图片/快手-组件库/11.png',
         '素材/作品图片/快手-组件库/12.png',
-        '素材/作品图片/快手-组件库/13.png',
+        '素材/作品图片/快手-组件库/13.webp',
         '素材/作品图片/快手-组件库/14.png',
         '素材/作品图片/快手-组件库/15.png',
         '素材/作品图片/快手-组件库/16.png',
-        '素材/作品图片/快手-组件库/17.png',
+        '素材/作品图片/快手-组件库/17.webp',
         '素材/作品图片/快手-组件库/18.png',
         '素材/作品图片/快手-组件库/19.png',
         { type: 'bilibili', bvid: 'BV1o3E16TE9d' },
-        '素材/作品图片/快手-组件库/20.png',
+        '素材/作品图片/快手-组件库/20.webp',
         '素材/作品图片/快手-组件库/21.png',
       ],
       results: []
     },
     '为企业应用设计': {
       gallery: [
-        '素材/作品图片/快手-为企业应用设计/2.png',
-        '素材/作品图片/快手-为企业应用设计/3.png',
+        '素材/作品图片/快手-为企业应用设计/2.webp',
+        '素材/作品图片/快手-为企业应用设计/3.webp',
         '素材/作品图片/快手-为企业应用设计/4.png',
         '素材/作品图片/快手-为企业应用设计/5.png',
         '素材/作品图片/快手-为企业应用设计/6.png',
@@ -345,15 +345,15 @@ function initLightbox() {
     'Enterprise-ui-skill': {
       gallery: [
         '素材/作品图片/快手-skill/2.png',
-        '素材/作品图片/快手-skill/3.png',
-        '素材/作品图片/快手-skill/4.png',
+        '素材/作品图片/快手-skill/3.webp',
+        '素材/作品图片/快手-skill/4.webp',
         '素材/作品图片/快手-skill/5.png',
         '素材/作品图片/快手-skill/6.png',
         '素材/作品图片/快手-skill/7.png',
         '素材/作品图片/快手-skill/8.png',
         { type: 'text', content: '最终交付不是一张图，而是可运行、可修改、可交接的页面资产。' },
         { type: 'bilibili', bvid: 'BV1gDJn6tEVg' },
-        '素材/作品图片/快手-skill/9.png',
+        '素材/作品图片/快手-skill/9.webp',
       ],
       results: []
     },
@@ -435,13 +435,13 @@ function initLightbox() {
         '素材/作品图片/快手-招聘/2.png',
         '素材/作品图片/快手-招聘/3.png',
         '素材/作品图片/快手-招聘/4.png',
-        '素材/作品图片/快手-招聘/5.png',
+        '素材/作品图片/快手-招聘/5.webp',
         '素材/作品图片/快手-招聘/6.png',
         '素材/作品图片/快手-招聘/7.png',
         '素材/作品图片/快手-招聘/8.png',
         '素材/作品图片/快手-招聘/9.png',
         '素材/作品图片/快手-招聘/10.png',
-        '素材/作品图片/快手-招聘/11.png',
+        '素材/作品图片/快手-招聘/11.webp',
         '素材/作品图片/快手-招聘/12.png',
         '素材/作品图片/快手-招聘/13.gif',
         '素材/作品图片/快手-招聘/14.png',
@@ -460,7 +460,7 @@ function initLightbox() {
         '素材/作品图片/快手-转正/4.png',
         '素材/作品图片/快手-转正/5.png',
         '素材/作品图片/快手-转正/6.png',
-        '素材/作品图片/快手-转正/7.png',
+        '素材/作品图片/快手-转正/7.webp',
         '素材/作品图片/快手-转正/8.png',
       ],
       results: []
@@ -470,12 +470,12 @@ function initLightbox() {
         '素材/作品图片/快手-万相/2.png',
         '素材/作品图片/快手-万相/3.png',
         '素材/作品图片/快手-万相/4.png',
-        '素材/作品图片/快手-万相/5.png',
+        '素材/作品图片/快手-万相/5.webp',
         '素材/作品图片/快手-万相/6.gif',
         '素材/作品图片/快手-万相/7.gif',
         '素材/作品图片/快手-万相/8.gif',
         '素材/作品图片/快手-万相/9.png',
-        '素材/作品图片/快手-万相/10.png',
+        '素材/作品图片/快手-万相/10.webp',
         '素材/作品图片/快手-万相/11.png',
         '素材/作品图片/快手-万相/12.png',
         '素材/作品图片/快手-万相/13.png',
@@ -490,9 +490,9 @@ function initLightbox() {
         '素材/作品图片/快手-大戏/3.png',
         '素材/作品图片/快手-大戏/4.png',
         '素材/作品图片/快手-大戏/5.png',
-        '素材/作品图片/快手-大戏/6.png',
-        '素材/作品图片/快手-大戏/7.png',
-        '素材/作品图片/快手-大戏/8.png',
+        '素材/作品图片/快手-大戏/6.webp',
+        '素材/作品图片/快手-大戏/7.webp',
+        '素材/作品图片/快手-大戏/8.webp',
         '素材/作品图片/快手-大戏/9.png',
       ],
       results: []
@@ -537,7 +537,7 @@ function initLightbox() {
       var imgs = pInfo.gallery || [];
       galleryEl.innerHTML = imgs.map(function(item) {
         if (typeof item === 'string') {
-          return '<div class="lightbox-gallery-item"><img src="' + item + '" alt="" loading="lazy"/></div>';
+          return '<div class="lightbox-gallery-item"><img src="' + item + '" alt="" loading="lazy" decoding="async"/></div>';
         }
         if (item && item.type === 'text') {
           return '<div class="lightbox-gallery-item lightbox-gallery-text"><p>' + item.content + '</p></div>';
