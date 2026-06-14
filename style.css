@@ -1897,8 +1897,6 @@ a.cbi-value:hover {
   margin-bottom: 28px;
 }
 .lightbox-gallery-item {
-  border-radius: 10px;
-  overflow: hidden;
   background: #1a1a24;
 }
 .lightbox-gallery-item img,
