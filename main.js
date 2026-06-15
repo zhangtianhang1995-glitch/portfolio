@@ -303,7 +303,7 @@ function initLightbox() {
         '素材/作品图片/快手-组件库/18.png',
         '素材/作品图片/快手-组件库/19.png',
         { type: 'bilibili', bvid: 'BV1o3E16TE9d' },
-        '素材/作品图片/快手-组件库/20.webp',
+        '素材/作品图片/快手-组件库/20.gif',
         '素材/作品图片/快手-组件库/21.png',
       ],
       results: []
