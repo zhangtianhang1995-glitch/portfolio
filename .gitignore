@@ -1,6 +1,7 @@
 # 大视频文件（已托管到B站）
 素材/project-01-demo.mp4
 素材/作品图片/快手-组件库/主页类demo.mov
+素材/作品图片/快手-skill/skill实例/skill实例.mp4
 
 # macOS 系统文件
 .DS_Store
@@ -8,3 +9,14 @@
 
 # 未使用的素材备份
 素材/hero-video.mp4
+
+# GIF 已转为 MP4，保留本地但不再部署
+*.gif
+
+# 静态图统一使用 WebP，源文件保留本地但不再部署
+*.jpg
+*.jpeg
+*.png
+!素材/作品图片/企业icon/Frame 1.png
+!素材/作品图片/企业icon/Frame 2.png
+!素材/作品图片/企业icon/Frame 3.png

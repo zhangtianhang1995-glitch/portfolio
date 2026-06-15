@@ -329,6 +329,9 @@ function initLightbox() {
           source.src = source.dataset.gallerySrc;
           source.removeAttribute('data-gallery-src');
           media.load();
+          if (media.dataset.galleryAutoplay === 'true') {
+            media.play().catch(function() {});
+          }
         }
         return;
       }
@@ -383,7 +386,7 @@ function initLightbox() {
         '素材/作品图片/快手-组件库/18.webp',
         '素材/作品图片/快手-组件库/19.webp',
         { type: 'bilibili', bvid: 'BV1o3E16TE9d' },
-        '素材/作品图片/快手-组件库/20.gif',
+        { type: 'video', src: '素材/作品图片/快手-组件库/20.mp4', autoplay: true },
         '素材/作品图片/快手-组件库/21.webp',
       ],
       results: []
@@ -415,8 +418,8 @@ function initLightbox() {
         '素材/作品图片/快手-为企业应用设计/24.webp',
         '素材/作品图片/快手-为企业应用设计/25.webp',
         '素材/作品图片/快手-为企业应用设计/26.webp',
-        '素材/作品图片/快手-为企业应用设计/27.gif',
-        '素材/作品图片/快手-为企业应用设计/28.gif',
+        { type: 'video', src: '素材/作品图片/快手-为企业应用设计/27.mp4', autoplay: true },
+        { type: 'video', src: '素材/作品图片/快手-为企业应用设计/28.mp4', autoplay: true },
         '素材/作品图片/快手-为企业应用设计/29.webp',
         '素材/作品图片/快手-为企业应用设计/30.webp',
       ],
@@ -448,7 +451,7 @@ function initLightbox() {
         '素材/作品图片/京东-锦礼/张天航作品集简历.012.webp',
         '素材/作品图片/京东-锦礼/张天航作品集简历.013.webp',
         '素材/作品图片/京东-锦礼/张天航作品集简历.014.webp',
-        '素材/作品图片/京东-锦礼/福礼.gif',
+        { type: 'video', src: '素材/作品图片/京东-锦礼/福礼.mp4', autoplay: true },
       ],
       results: [
         { num: '50+', label: '渲染作品' },
@@ -506,7 +509,7 @@ function initLightbox() {
         '素材/作品图片/京东-京麦/张天航作品集简历.027.webp',
         '素材/作品图片/京东-京麦/张天航作品集简历.028.webp',
         '素材/作品图片/京东-京麦/张天航作品集简历.029.webp',
-        '素材/作品图片/京东-京麦/总.gif',
+        { type: 'video', src: '素材/作品图片/京东-京麦/总.mp4', autoplay: true },
       ],
       results: []
     },
@@ -523,11 +526,11 @@ function initLightbox() {
         '素材/作品图片/快手-招聘/10.webp',
         '素材/作品图片/快手-招聘/11.webp',
         '素材/作品图片/快手-招聘/12.webp',
-        '素材/作品图片/快手-招聘/13.gif',
+        { type: 'video', src: '素材/作品图片/快手-招聘/13.mp4', autoplay: true },
         '素材/作品图片/快手-招聘/14.webp',
-        '素材/作品图片/快手-招聘/15.gif',
+        { type: 'video', src: '素材/作品图片/快手-招聘/15.mp4', autoplay: true },
         '素材/作品图片/快手-招聘/16.webp',
-        '素材/作品图片/快手-招聘/17.gif',
+        { type: 'video', src: '素材/作品图片/快手-招聘/17.mp4', autoplay: true },
         '素材/作品图片/快手-招聘/18.webp',
         '素材/作品图片/快手-招聘/19.webp',
       ],
@@ -551,9 +554,9 @@ function initLightbox() {
         '素材/作品图片/快手-万相/3.webp',
         '素材/作品图片/快手-万相/4.webp',
         '素材/作品图片/快手-万相/5.webp',
-        '素材/作品图片/快手-万相/6.gif',
-        '素材/作品图片/快手-万相/7.gif',
-        '素材/作品图片/快手-万相/8.gif',
+        { type: 'video', src: '素材/作品图片/快手-万相/6.mp4', autoplay: true },
+        { type: 'video', src: '素材/作品图片/快手-万相/7.mp4', autoplay: true },
+        { type: 'video', src: '素材/作品图片/快手-万相/8.mp4', autoplay: true },
         '素材/作品图片/快手-万相/9.webp',
         '素材/作品图片/快手-万相/10.webp',
         '素材/作品图片/快手-万相/11.webp',
@@ -635,7 +638,9 @@ function initLightbox() {
           return '<div class="lightbox-gallery-item lightbox-video-placeholder" data-bvid="' + item.bvid + '"><button type="button" class="lightbox-video-load">播放视频</button></div>';
         }
         if (item && item.type === 'video') {
-          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><video controls playsinline preload="none" data-gallery-src="' + item.src + '" data-gallery-priority="' + priority + '"><source data-gallery-src="' + item.src + '"></video></div>';
+          var autoAttrs = item.autoplay ? ' autoplay muted loop' : ' controls';
+          var autoData = item.autoplay ? ' data-gallery-autoplay="true"' : '';
+          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><video' + autoAttrs + ' playsinline preload="none" data-gallery-src="' + item.src + '" data-gallery-priority="' + priority + '"' + autoData + '><source data-gallery-src="' + item.src + '"></video></div>';
         }
         return '';
       }).join('');
