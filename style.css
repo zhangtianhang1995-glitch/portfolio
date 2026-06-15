@@ -1913,6 +1913,31 @@ a.cbi-value:hover {
 .lightbox-gallery-item:hover img,
 .lightbox-gallery-item:hover video { transform: scale(1.04); }
 
+.lightbox-video-placeholder {
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255,255,255,0.10), transparent 34%),
+    linear-gradient(135deg, rgba(37,99,235,0.18), rgba(24,24,36,0.96));
+}
+.lightbox-video-load {
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  padding: 12px 22px;
+  background: rgba(255,255,255,0.10);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lightbox-video-load:hover {
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-1px);
+}
+
 /* Skeleton shimmer */
 @keyframes skeleton-shimmer {
   0%   { background-position: -600px 0; }

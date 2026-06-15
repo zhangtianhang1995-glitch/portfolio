@@ -23,6 +23,20 @@ window.addEventListener('DOMContentLoaded', () => {
   }, 100);
 });
 
+window.addEventListener('DOMContentLoaded', () => {
+  const bgVideo = document.querySelector('.global-bg-video');
+  if (!bgVideo || window.matchMedia('(max-width: 768px)').matches) return;
+
+  window.setTimeout(() => {
+    bgVideo.querySelectorAll('source[data-src]').forEach(source => {
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+    });
+    bgVideo.load();
+    bgVideo.play().catch(() => {});
+  }, 1200);
+});
+
 // ─── Custom Cursor ────────────────────────────────────────────
 
 const cursor    = document.getElementById('cursor');
@@ -279,10 +293,76 @@ function initLightbox() {
     allPanels.push({ img: p.dataset.img||'', title: p.dataset.title||'', tag: p.dataset.tag||'', desc: p.dataset.desc||'' });
   });
   var currentIndex = 0;
+  var galleryObserver = null;
+  var lastOpenAt = 0;
+  var lastOpenIndex = -1;
+
+  function closeGalleryObserver() {
+    if (galleryObserver) {
+      galleryObserver.disconnect();
+      galleryObserver = null;
+    }
+  }
+
+  function hideSkeleton(media) {
+    var s = media && media.previousElementSibling;
+    if (s && s.classList.contains('skeleton-placeholder')) {
+      s.classList.add('hidden');
+    }
+  }
+
+  function loadDeferredGalleryMedia(root) {
+    if (!root) return;
+
+    var loadMedia = function(media) {
+      if (!media || media.dataset.galleryLoaded) return;
+      media.dataset.galleryLoaded = 'true';
+
+      if (media.tagName === 'IFRAME') {
+        media.src = media.dataset.gallerySrc;
+        return;
+      }
+
+      if (media.tagName === 'VIDEO') {
+        var source = media.querySelector('source[data-gallery-src]');
+        if (source) {
+          source.src = source.dataset.gallerySrc;
+          source.removeAttribute('data-gallery-src');
+          media.load();
+        }
+        return;
+      }
+
+      media.src = media.dataset.gallerySrc;
+    };
+
+    root.querySelectorAll('[data-gallery-src]').forEach(function(media) {
+      if (media.dataset.galleryPriority === 'eager') {
+        loadMedia(media);
+        return;
+      }
+
+      if ('IntersectionObserver' in window) {
+        if (!galleryObserver) {
+          galleryObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                loadMedia(entry.target);
+                galleryObserver.unobserve(entry.target);
+              }
+            });
+          }, { root: galleryEl, rootMargin: '600px 0px' });
+        }
+        galleryObserver.observe(media);
+      } else {
+        loadMedia(media);
+      }
+    });
+  }
 
   var projectData = {
     'B 端设计系统': {
-      video: '//player.bilibili.com/player.html?bvid=BV173E16MEhn&autoplay=0&danmaku=0',
+      video: 'https://player.bilibili.com/player.html?bvid=BV173E16MEhn&autoplay=0&danmaku=0',
       gallery: [
         '素材/作品图片/快手-组件库/2.webp',
         '素材/作品图片/快手-组件库/3.webp',
@@ -520,36 +600,69 @@ function initLightbox() {
     // Video
     var videoWrap = document.getElementById('lightboxVideoWrap');
     var videoEl   = document.getElementById('lightboxVideo');
-    var videoSrc  = document.getElementById('lightboxVideoSrc');
     if (videoWrap && videoEl) {
       var pInfo0 = projectData[data.title] || {};
       if (pInfo0.video) {
-        videoEl.src = pInfo0.video;
+        videoEl.src = '';
+        videoEl.dataset.src = pInfo0.video;
+        videoEl.loading = 'lazy';
         videoWrap.style.display = 'block';
+        window.setTimeout(function() {
+          if (lightbox.classList.contains('open') && videoEl.dataset.src === pInfo0.video) {
+            videoEl.src = videoEl.dataset.src;
+          }
+        }, 700);
       } else {
         videoEl.src = '';
+        videoEl.removeAttribute('data-src');
         videoWrap.style.display = 'none';
       }
     }
 
     if (galleryEl) {
+      closeGalleryObserver();
       var pInfo = projectData[data.title] || {};
       var imgs = pInfo.gallery || [];
-      galleryEl.innerHTML = imgs.map(function(item) {
+      galleryEl.innerHTML = imgs.map(function(item, index) {
+        var priority = index < 2 ? 'eager' : 'lazy';
         if (typeof item === 'string') {
-          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><img src="' + item + '" alt="" loading="eager" decoding="async" onload="var s=this.previousElementSibling;if(s&&s.classList.contains(\'skeleton-placeholder\')){s.classList.add(\'hidden\')}"/></div>';
+          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><img data-gallery-src="' + item + '" data-gallery-priority="' + priority + '" alt="" loading="' + priority + '" decoding="async"/></div>';
         }
         if (item && item.type === 'text') {
           return '<div class="lightbox-gallery-item lightbox-gallery-text"><p>' + item.content + '</p></div>';
         }
         if (item && item.type === 'bilibili') {
-          return '<div class="lightbox-gallery-item"><iframe src="//player.bilibili.com/player.html?bvid=' + item.bvid + '&autoplay=0&danmaku=0" frameborder="0" allowfullscreen scrolling="no" style="width:100%;aspect-ratio:16/9;"></iframe></div>';
+          return '<div class="lightbox-gallery-item lightbox-video-placeholder" data-bvid="' + item.bvid + '"><button type="button" class="lightbox-video-load">播放视频</button></div>';
         }
         if (item && item.type === 'video') {
-          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><video controls playsinline preload="metadata" oncanplay="var s=this.previousElementSibling;if(s&&s.classList.contains(\'skeleton-placeholder\')){s.classList.add(\'hidden\')}"><source src="' + item.src + '"></video></div>';
+          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><video controls playsinline preload="none" data-gallery-src="' + item.src + '" data-gallery-priority="' + priority + '"><source data-gallery-src="' + item.src + '"></video></div>';
         }
         return '';
       }).join('');
+
+      galleryEl.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('load', function() { hideSkeleton(img); });
+      });
+      galleryEl.querySelectorAll('video').forEach(function(video) {
+        video.addEventListener('loadedmetadata', function() { hideSkeleton(video); });
+        video.addEventListener('play', function() {
+          var source = video.querySelector('source[data-gallery-src]');
+          if (source) {
+            source.src = source.dataset.gallerySrc;
+            source.removeAttribute('data-gallery-src');
+            video.load();
+            video.play().catch(function() {});
+          }
+        }, { once: true });
+      });
+      galleryEl.querySelectorAll('.lightbox-video-placeholder').forEach(function(item) {
+        item.addEventListener('click', function() {
+          var bvid = item.dataset.bvid;
+          if (!bvid) return;
+          item.innerHTML = '<iframe src="https://player.bilibili.com/player.html?bvid=' + bvid + '&autoplay=0&danmaku=0" frameborder="0" allowfullscreen scrolling="no" loading="lazy" style="width:100%;aspect-ratio:16/9;"></iframe>';
+        });
+      });
+      loadDeferredGalleryMedia(galleryEl);
     }
 
     if (resultsEl) {
@@ -588,16 +701,27 @@ function initLightbox() {
     // stop iframe video by clearing src
     var videoEl = document.getElementById('lightboxVideo');
     if (videoEl) videoEl.src = '';
+    closeGalleryObserver();
   }
 
   var panels = document.querySelectorAll('[data-lightbox]');
   panels.forEach(function(panel, idx) {
-    panel.style.cursor = 'pointer';
-    panel.addEventListener('mousedown', function(e) {
-      e.stopPropagation();
+    var openPanel = function(e) {
+      var now = Date.now();
+      if (lightbox.classList.contains('open') && lastOpenIndex === idx && now - lastOpenAt < 250) {
+        if (e) e.stopPropagation();
+        return;
+      }
+      if (e) e.stopPropagation();
+      lastOpenAt = now;
+      lastOpenIndex = idx;
       currentIndex = idx;
       openLightbox(allPanels[idx]);
-    });
+    };
+
+    panel.style.cursor = 'pointer';
+    panel.addEventListener('mousedown', openPanel);
+    panel.addEventListener('click', openPanel);
   });
 
   if (prevBtn) prevBtn.addEventListener('click', function() {
