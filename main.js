@@ -537,7 +537,7 @@ function initLightbox() {
       var imgs = pInfo.gallery || [];
       galleryEl.innerHTML = imgs.map(function(item) {
         if (typeof item === 'string') {
-          return '<div class="lightbox-gallery-item"><img src="' + item + '" alt="" loading="lazy" decoding="async"/></div>';
+          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><img src="' + item + '" alt="" loading="lazy" decoding="async" onload="this.previousElementSibling&&this.previousElementSibling.classList.add(\'hidden\')"/></div>';
         }
         if (item && item.type === 'text') {
           return '<div class="lightbox-gallery-item lightbox-gallery-text"><p>' + item.content + '</p></div>';
@@ -546,7 +546,7 @@ function initLightbox() {
           return '<div class="lightbox-gallery-item"><iframe src="//player.bilibili.com/player.html?bvid=' + item.bvid + '&autoplay=0&danmaku=0" frameborder="0" allowfullscreen scrolling="no" style="width:100%;aspect-ratio:16/9;"></iframe></div>';
         }
         if (item && item.type === 'video') {
-          return '<div class="lightbox-gallery-item"><video controls playsinline preload="metadata"><source src="' + item.src + '"></video></div>';
+          return '<div class="lightbox-gallery-item"><div class="skeleton-placeholder"></div><video controls playsinline preload="metadata" oncanplay="this.previousElementSibling&&this.previousElementSibling.classList.add(\'hidden\')"><source src="' + item.src + '"></video></div>';
         }
         return '';
       }).join('');

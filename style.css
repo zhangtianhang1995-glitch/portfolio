@@ -1900,6 +1900,7 @@ a.cbi-value:hover {
   border-radius: 10px;
   overflow: hidden;
   background: #1a1a24;
+  position: relative;
 }
 .lightbox-gallery-item img,
 .lightbox-gallery-item video {
@@ -1911,6 +1912,31 @@ a.cbi-value:hover {
 }
 .lightbox-gallery-item:hover img,
 .lightbox-gallery-item:hover video { transform: scale(1.04); }
+
+/* Skeleton shimmer */
+@keyframes skeleton-shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+.skeleton-placeholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 0%,
+    rgba(255,255,255,0.10) 40%,
+    rgba(255,255,255,0.04) 80%
+  );
+  background-size: 600px 100%;
+  animation: skeleton-shimmer 1.6s infinite linear;
+  border-radius: 10px;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.skeleton-placeholder.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
 /* Results row — hidden */
 .lightbox-results { display: none; }
