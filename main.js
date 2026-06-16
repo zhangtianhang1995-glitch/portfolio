@@ -786,6 +786,29 @@ if (document.readyState === 'loading') {
   initLightbox();
 }
 
+// ─── Card image fallback ─────────────────────────────────────
+
+function initCardImageFallbacks() {
+  document.querySelectorAll('.expand-img, .creation-photo').forEach(function(img) {
+    img.addEventListener('error', function() {
+      if (img.dataset.fallbackTried === 'true') return;
+
+      var card = img.closest('[data-img]');
+      var fallbackSrc = card && card.dataset.img;
+      if (!fallbackSrc || img.src.indexOf(fallbackSrc) !== -1) return;
+
+      img.dataset.fallbackTried = 'true';
+      img.src = fallbackSrc;
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCardImageFallbacks);
+} else {
+  initCardImageFallbacks();
+}
+
 // ─── Page load fade ───────────────────────────────────────────
 
 window.addEventListener('load', () => {
